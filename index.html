@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>لعبة النفوذ</title><link rel="stylesheet" href="style.css"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#10131a">
+</head>
+<body>
+<div class="app">
+<header><div><h1>لعبة النفوذ</h1><small>خداع • تحدي • آخر لاعب صامد</small></div><div id="roomBadge"></div></header>
+
+<section id="lobby" class="card">
+  <h2>ابدأ لعبة</h2>
+  <input id="name" maxlength="18" placeholder="اسمك">
+  <div class="row"><button onclick="create()">إنشاء غرفة</button><input id="code" maxlength="5" placeholder="رمز الغرفة"><button class="secondary" onclick="join()">انضمام</button></div>
+  <div id="lobbyInfo"></div>
+  <button id="startBtn" onclick="start()" hidden>بدء اللعبة</button>
+</section>
+
+<main id="game" hidden>
+  <div class="status card"><div id="message"></div><div id="turn"></div></div>
+  <section id="players" class="players"></section>
+  <section class="my card"><h3>نفوذي السري</h3><div id="cards" class="cards"></div><div class="coins">🪙 <b id="coins">0</b></div></section>
+  <section id="actions" class="card">
+    <h3>اختر حركة</h3>
+    <div class="actions">
+      <button onclick="act('income')">دخل<br><small>+1</small></button>
+      <button onclick="act('foreign')">مساعدات<br><small>+2</small></button>
+      <button onclick="act('tax')">ضريبة الدوق<br><small>+3</small></button>
+      <button onclick="act('assassinate')">اغتيال<br><small>3 🪙</small></button>
+      <button onclick="act('steal')">سرقة<br><small>2 🪙</small></button>
+      <button onclick="act('exchange')">تبديل<br><small>السفير</small></button>
+      <button class="danger" onclick="act('coup')">انقلاب<br><small>7 🪙</small></button>
+    </div>
+  </section>
+  <section id="response" class="card" hidden></section>
+</main>
+</div>
+<script>if("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script><script src="app.js"></script>
+</body></html>
