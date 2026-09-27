@@ -6,7 +6,7 @@ const express = require("express");
 const { WebSocketServer } = require("ws");
 
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
